@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     email: '',
     number: ''
   }
-
+  public status: boolean = false;
   public userData: any = [];
 
   constructor(private service: ServerlessService){}
@@ -26,13 +26,16 @@ export class AppComponent implements OnInit {
 
   handleFormSubmit = (event: any) => {
     // event.preventDefault();
+    this.status = true;
     console.log("form submitted", this.formData);
 
     this.service.saveuser(this.formData)
     .subscribe(data=>
       {
         console.log(data);
+        this.status = false;
         this.getUser();
+        
       }
     );
 

@@ -53,7 +53,7 @@
   </div>
 </section>
 
-<section *ngIf="userData.length > 0">
+<section *ngIf="userData.length > 0 && status === false; else loading">
   <div class="column">
     <h3 class="title is-3">
       This table displays latest records of OSCWI user ID's requests
@@ -80,3 +80,11 @@
     </table>
   </div>
 </section>
+
+<ng-template #loading>
+
+    <div>
+      <h1 style="text-align: center;">Loading...</h1>
+     </div>
+    
+</ng-template>
