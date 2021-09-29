@@ -14,4 +14,8 @@ export class ServerlessService {
   saveuser (user:any) :Observable<any>{
     return this.http.put(this.url, user)
   }
+
+  getUser (): Observable<any>{
+    return this.http.get(this.url);
+  }
 }

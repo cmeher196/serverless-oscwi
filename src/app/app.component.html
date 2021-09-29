@@ -15,40 +15,68 @@
           OSCWI User ID Details
         </h3>
         <!-- <form id="addEntry"> -->
-          <div class="field">
-            <label class="label">ID Contact Name*</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Contact name" id="name" [(ngModel)]="formData.name">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">OSCWI ID*</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="OSCWI ID" id="id"  [(ngModel)]="formData.id">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">ID Contact Email*</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Contact Email" id="email"  [(ngModel)]="formData.email">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">ID Contact Number*</label>
-            <div class="control">
-              <input class="input" type="number" placeholder="Contact Number" id="number"  [(ngModel)]="formData.number">
-
-            </div>
-          </div>
-
+        <div class="field">
+          <label class="label">ID Contact Name*</label>
           <div class="control">
-            <button class="button is-primary" (click)="handleFormSubmit($event)">Submit</button>
+            <input class="input" type="text" placeholder="Contact name" id="name" [(ngModel)]="formData.name">
           </div>
+        </div>
+
+        <div class="field">
+          <label class="label">OSCWI ID*</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="OSCWI ID" id="id" [(ngModel)]="formData.id">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">ID Contact Email*</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Contact Email" id="email" [(ngModel)]="formData.email">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">ID Contact Number*</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Contact Number" id="number" [(ngModel)]="formData.number">
+
+          </div>
+        </div>
+
+        <div class="control">
+          <button class="button is-primary" (click)="handleFormSubmit($event)">Submit</button>
+        </div>
         <!-- </form> -->
       </div>
     </div>
+  </div>
+</section>
+
+<section *ngIf="userData.length > 0">
+  <div class="column">
+    <h3 class="title is-3">
+      This table displays latest records of OSCWI user ID's requests
+    </h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let user of userData">
+          
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.number}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>

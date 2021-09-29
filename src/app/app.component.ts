@@ -16,22 +16,35 @@ export class AppComponent implements OnInit {
     number: ''
   }
 
+  public userData: any = [];
 
   constructor(private service: ServerlessService){}
 
   ngOnInit() {
-
+    this.getUser()
   }
 
   handleFormSubmit = (event: any) => {
     // event.preventDefault();
     console.log("form submitted", this.formData);
 
-    this.service.saveuser(this.formData).subscribe(data=>console.log(data)
-    )
+    this.service.saveuser(this.formData)
+    .subscribe(data=>
+      {
+        console.log(data);
+        this.getUser();
+      }
+    );
 
   }
 
+
+  getUser=()=>{
+    this.service.getUser().subscribe(data=>{
+      this.userData = data.entries;
+      console.log("data is here",this.userData)
+    });
+  }
 
 
 }
